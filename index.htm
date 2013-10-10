@@ -6,11 +6,12 @@
 
 		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
 		
-	    <script type="text/javascript">
-		
-					var personList = [];
-			var personClasses = [];
-			var personAge = [];
+<script type="text/javascript">	
+//need to be global
+var personList = [];
+var personClasses = [];
+var personAge = [];
+var pieBlock = [];
 		
         $(document).ready(function(){
 		
@@ -27,6 +28,7 @@
 			//loop
 			$(xml).find('person').each(function(){
                         var $person = $(this);
+			var tempArray = [];
 			
 			personList.push($person.attr("name"));
 			//transform text to Float
@@ -34,18 +36,86 @@
 			//transform text to Integer
 			personAge.push(parseInt($person.find("age").text()));
 			
+			//FOR PIECHART
+			tempArray = [$person.attr("name"), parseFloat($person.find("shootingpercentage").text())];
+			pieBlock.push(tempArray);
 			
 			
 			console.log(personList);
 			console.log(personClasses);
-			console.log(personAge);	
+			console.log(personAge);
+			console.log(pieBlock);	
 			 });
 		   //outside the loop	
 		   WriteChart();
+		   WritePieChart();
 		   }
 		});
         });
-
+		
+function WritePieChart(){
+	
+	
+	//radialize the colors
+	Highcharts.getOptions().colors = Highcharts.map(Highcharts.getOptions().colors, function(color) {
+		    return {
+		        radialGradient: { cx: 0.5, cy: 0.3, r: 0.7 },
+		        stops: [
+		            [0, color],
+		            [1, Highcharts.Color(color).brighten(-0.3).get('rgb')] // darken
+		        ]
+		    };
+		});
+	
+	
+	// Build the chart
+        $('#chart2').highcharts({
+            chart: {
+                plotBackgroundColor: null,
+                plotBorderWidth: null,
+                plotShadow: false
+            },
+            title: {
+                text: 'Shooting percentage'
+            },
+            tooltip: {
+        	    pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+            },
+            plotOptions: {
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    dataLabels: {
+                        enabled: true,
+                        color: '#000000',
+                        connectorColor: '#000000',
+                        formatter: function() {
+                            return '<b>'+ this.point.name +'</b>: '+ Math.round(this.percentage) +' %';
+                        }
+                    }
+                }
+            },
+            series: [{
+                type: 'pie',
+                name: 'Shooting percentage',
+		data: pieBlock
+                //data: [
+                //    ['Firefox',   45.0],
+                //    ['IE',       26.8],
+                //    {
+                //        name: 'Chrome',
+                //        y: 12.8,
+                //        sliced: true,
+                //        selected: true
+                //    },
+                //    ['Safari',    8.5],
+                //    ['Opera',     6.2],
+                //    ['Others',   0.7]
+                //]
+            }]
+        });
+}	
+	
 function WriteChart(){
 		
         $('#chart1').highcharts({

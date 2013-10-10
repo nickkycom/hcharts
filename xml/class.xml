@@ -3,37 +3,37 @@
     <person name="Nick">
         <classes>5</classes>
         <age>28</age>
-	<shootingpercentage>14</shootingpercentage>
+	<shootingpercentage>12</shootingpercentage>
     </person>
     <person name="Steven">
         <classes>3</classes>
         <age>32</age>
-	<shootingpercentage>14</shootingpercentage>
+	<shootingpercentage>12</shootingpercentage>
     </person>
     <person name="Maegan">
         <classes>4</classes>
         <age>20</age>
-	<shootingpercentage>14</shootingpercentage>
+	<shootingpercentage>12</shootingpercentage>
     </person>
     <person name="Caroline">
         <classes>5</classes>
         <age>21</age>
-	<shootingpercentage>14</shootingpercentage>
+	<shootingpercentage>12</shootingpercentage>
     </person>
     <person name="Mindy">
         <classes>4</classes>
         <age>21</age>
-	<shootingpercentage>21</shootingpercentage>
+	<shootingpercentage>28</shootingpercentage>
     </person>
     <person name="Katie">
         <classes>4</classes>
         <age>21</age>
-	<shootingpercentage>14</shootingpercentage>
+	<shootingpercentage>12</shootingpercentage>
     </person>
     <person name="Melissa">
         <classes>6</classes>
         <age>22</age>
-	<shootingpercentage>14</shootingpercentage>
+	<shootingpercentage>12</shootingpercentage>
 
     </person>
 </people>
