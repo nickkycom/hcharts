@@ -5,20 +5,46 @@
 		<title>Highcharts Example</title>
 
 		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+		
+	    <script type="text/javascript">
+        $(document).ready(function(){
+            $.ajax({
+                type: "GET",
+                url: "./xml/class.xml",
+                dataType: "xml",
+                success: function(xml) {
+                
+			$(xml).find('person').each(function(){
+                        var $person = $(this);
+			console.log($person.attr("name"));
+			var personlist = [];
+			personList.push($person.attr("name"));
+                    });
+                }
+	});
+        });
+    </script>
+	
+		
+	
+		
 		<script type="text/javascript">
 $(function () {
+	var nickswins = 100;
+	var testarray = [300, 600, 120,150,122, 490];
+	
         $('#container').highcharts({
             chart: {
-                type: 'bar'
+                type: 'column'
             },
             title: {
-                text: 'Historic World Population by Region'
+                text: 'Class Wins'
             },
             subtitle: {
-                text: 'Source: Wikipedia.org'
+                text: 'Source: Nick Shchetko'
             },
             xAxis: {
-                categories: ['Africa', 'America', 'Asia', 'Europe', 'Oceania'],
+                categories: ['Caroline', 'Melissa', 'Maegan', 'Nick', 'Katie', 'Mindy'],
                 title: {
                     text: null
                 }
@@ -51,7 +77,7 @@ $(function () {
                 y: 100,
                 floating: true,
                 borderWidth: 1,
-                backgroundColor: '#FFFFFF',
+                backgroundColor: '#777777',
                 shadow: true
             },
             credits: {
@@ -59,13 +85,13 @@ $(function () {
             },
             series: [{
                 name: 'Year 1800',
-                data: [107, 31, 635, 203, 2]
+                data: [107, 31, 635, 203, nickswins, 20]
             }, {
                 name: 'Year 1900',
-                data: [133, 156, 947, 408, 6]
+                data: [133, 156, 947, 408, 622, 210]
             }, {
                 name: 'Year 2008',
-                data: [973, 914, 4054, 732, 34]
+                data: testarray
             }]
         });
     });
